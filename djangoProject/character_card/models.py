@@ -1,36 +1,37 @@
 from django.db import models
 
+
 class Card(models.Model):
     #m = max, c = current
-    MHP =models.IntegerField(max_length=2)
-    CHP =models.IntegerField(max_length=2)
-    Name =models.TextField(max_lenght=20)
-    Class =models.TextField(max_lenght=20)
-    Race =models.TextField(max_lenght=20)
-    Level =models.IntegerField(max_length=2)
-    Strenght =models.IntegerField(max_length=2)
-    Dexterity =models.IntegerField(max_length=2)
-    Constitution =models.IntegerField(max_length=2)
-    Inteligence =models.IntegerField(max_length=2)
-    Wisdom =models.IntegerField(max_length=2)
-    Charisma =models.IntegerField(max_length=2)
+    MHP = models.IntegerField()
+    CHP = models.IntegerField()
+    Name = models.TextField()
+    Class = models.TextField()
+    Race = models.TextField()
+    Level = models.IntegerField()
+    Strenght = models.IntegerField()
+    Dexterity = models.IntegerField()
+    Constitution = models.IntegerField()
+    Inteligence = models.IntegerField()
+    Wisdom = models.IntegerField()
+    Charisma = models.IntegerField()
     # saving throws
-    StrST =models.IntegerField(max_length=2)
-    DexST =models.IntegerField(max_length=2)
-    ConST =models.IntegerField(max_length=2)
-    IntST =models.IntegerField(max_length=2)
-    WisST =models.IntegerField(max_length=2)
+    StrST = models.IntegerField()
+    DexST = models.IntegerField()
+    ConST = models.IntegerField()
+    IntST = models.IntegerField()
+    WisST = models.IntegerField()
     #hit dices
-    Mhitdice =models.IntegerField(max_length=2)
-    Chitdice =models.IntegerField(max_length=2)
+    Mhitdice = models.IntegerField()
+    Chitdice = models.IntegerField()
     #death saves
-    Dsp =models.IntegerField(max_length=2)
-    Dsf =models.IntegerField(max_length=2)
-    Skills =models.TextField(max_lenght=200)
-    Proficiencies =models.TextField(max_lenght=200)
-    Spells =models.TextField(max_lenght=200)
-    Inventory =models.TextField(max_lenght=20)
+    Dsp = models.IntegerField()
+    Dsf = models.IntegerField()
+    Skills = models.TextField()
+    Proficiencies = models.TextField()
+    Spells = models.TextField()
+    Inventory = models.TextField()
 
 
 
-# Create your models here.
+

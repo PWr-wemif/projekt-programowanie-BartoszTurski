@@ -1,8 +1,10 @@
-aplikacja będzie napisana w pythonie w technologii Django, przy pomocy PyCharma 
-aplikacja będzie pozwalała przeglądać, modyfikować i zarządzać kartami postaci do gier typu ttrpg oraz będzie zawierać inne narzędzia potrzebne do rozgrywki (takie jak symulator rzutów kośćmi, czy miejsce na notatki)
-dane z kart postaci będą przechowywane w bazie danych i dostępne w przeglądarce.
-będą 2 rodzaje kont:
- konto użytkownika - pozwala na dostęp do przeglądania i modyfikacji własnej karty postaci oraz narzędzi
- konto administratora - pozwala na dostęp do przeglądania i modyfikacji kart innych użytkowników oraz pozostałych narzędzi.
+Aplikacja napisana w Django <br>
+<br>
+<br>
+użytkownik będzie mógł: <br>
+* Stworzyć kartę postaci <br>
+* Uzyskać dostęp do swojej karty przez przeglądarkę (Administrator będzie miał dostęp do wszystkich kart w grupie) <br>
+* Modyfikować kartę <br>
+* korzystać z innych przydatnych narzędzi, na przykład symulator rzutów kością i miejsce na notatki <br>
+* posiadać kilka kart postaci naraz <br>
 
-użytkownik będzie mógł użyć aplikacji do stworzenia karty postaci oraz urzywania jej podczas rozgrywki
