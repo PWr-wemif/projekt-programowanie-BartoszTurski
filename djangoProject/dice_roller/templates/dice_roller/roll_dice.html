@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Symulator Rzutów Kością</title>
+</head>
+<body>
+    <h2>Symulator rzutów kością 2023</h2>
+    <form method="post" action="{% url 'dice_roller:roll_dice' %}">
+        {% csrf_token %}
+        <label for="num_dice">ilość rzutów:</label>
+        <input type="number" name="num_dice" value="1" min="1"><br>
+        <label for="num_sides">ilość ścianek:</label>
+        <input type="number" name="num_sides" value="6" min="1"><br>
+        <button type="submit">Rzuć</button>
+    </form>
+
+    {% if rolls %}
+        <h3>Wyniki</h3>
+        <p>ilość rzutów: {{ num_dice }}</p>
+        <p>ilość ścianek: {{ num_sides }}</p>
+        <p>wyniki: {{ rolls }}</p>
+    {% endif %}
+</body>
+</html>
