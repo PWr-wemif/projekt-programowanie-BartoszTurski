@@ -4,6 +4,7 @@
     <title>Symulator Rzutów Kością</title>
 </head>
 <body>
+<a href="{% url 'character_card:character_view' %}">Powrót do karty postaci</a>
     <h2>Symulator rzutów kością 2023</h2>
     <form method="post" action="{% url 'dice_roller:roll_dice' %}">
         {% csrf_token %}

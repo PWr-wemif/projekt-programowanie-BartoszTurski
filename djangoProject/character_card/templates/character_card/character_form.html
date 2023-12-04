@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Karta postaci D&D</title>
+    <style>
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .item {
+            flex-basis: calc(33% - 20px);
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #000;
+            box-sizing: border-box;
+        }
+        .item label {
+            display: block;
+        }
+        .item input, .item textarea {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <a href="{% url 'dice_roller:roll_dice' %}">Przejdź do symulatora rzutów kością</a>
+    <form action="/character_card/" method="post">
+        {% csrf_token %}
+        <div class="container">
+            <div class="item">
+                <label for="name">Imię:</label>
+                <input type="text" id="name" name="name" value="{{ character.name }}">
+                <label for="race">Rasa:</label>
+                <input type="text" id="race" name="race" value="{{ character.race }}">
+                <label for="class">Klasa:</label>
+                <input type="text" id="class" name="class" value="{{ character.class_name }}">
+                <label for="level">Poziom:</label>
+                <input type="number" id="level" name="level" value="{{ character.level }}">
+                <label for="MHP">Maksymalne punkty życia:</label>
+                <input type="number" id="MHP" name="MHP" value="{{ character.Mhitdice }}">
+                <label for="CHP">Aktualne punkty życia:</label>
+                <input type="number" id="CHP" name="CHP" value="{{ character.Chitdice }}">
+            </div>
+            <div class="item">
+                <label for="strength">Siła:</label>
+                <input type="number" id="strength" name="strength" value="{{ character.strength }}">
+                <label for="dexterity">Zręczność:</label>
+                <input type="number" id="dexterity" name="dexterity" value="{{ character.dexterity }}">
+                <label for="constitution">Wytrzymałość:</label>
+                <input type="number" id="constitution" name="constitution" value="{{ character.constitution }}">
+                <label for="intelligence">Inteligencja:</label>
+                <input type="number" id="intelligence" name="intelligence" value="{{ character.intelligence }}">
+                <label for="wisdom">Mądrość:</label>
+                <input type="number" id="wisdom" name="wisdom" value="{{ character.wisdom }}">
+                <label for="charisma">Charyzma:</label>
+                <input type="number" id="charisma" name="charisma" value="{{ character.charisma }}">
+            </div>
+            <div class="item">
+                <label for="StrST">Rzut obronny Siły:</label>
+                <input type="number" id="StrST" name="StrST" value="{{ character.StrST }}">
+                <label for="DexST">Rzut obronny Zręczności:</label>
+                <input type="number" id="DexST" name="DexST" value="{{ character.DexST }}">
+                <label for="ConST">Rzut obronny Wytrzymałości:</label>
+                <input type="number" id="ConST" name="ConST" value="{{ character.ConST }}">
+                <label for="IntST">Rzut obronny Inteligencji:</label>
+                <input type="number" id="IntST" name="IntST" value="{{ character.IntST }}">
+                <label for="WisST">Rzut obronny Mądrości:</label>
+                <input type="number" id="WisST" name="WisST" value="{{ character.WisST }}">
+                <label for="Mhitdice">Maksymalna liczba kości życia:</label>
+                <input type="number" id="Mhitdice" name="Mhitdice" value="{{ character.Mhitdice }}">
+                <label for="Chitdice">Aktualna liczba kości życia:</label>
+                <input type="number" id="Chitdice" name="Chitdice" value="{{ character.Chitdice }}">
+                <label for="Dsp">Udane rzuty na śmierć:</label>
+                <input type="number" id="Dsp" name="Dsp" value="{{ character.Dsp }}">
+                <label for="Dsf">Nieudane rzuty na śmierć:</label>
+                <input type="number" id="Dsf" name="Dsf" value="{{ character.Dsf }}">
+            </div>
+            <div class="item">
+                <label for="skills">Umiejętności:</label>
+                <textarea id="skills" name="skills">{{ character.skills }}</textarea>
+                <label for="proficiencies">Biegłości:</label>
+                <textarea id="proficiencies" name="proficiencies">{{ character.proficiencies }}</textarea>
+                <label for="spells">Zaklęcia:</label>
+                <textarea id="spells" name="spells">{{ character.spells }}</textarea>
+                <label for="inventory">Ekwipunek:</label>
+                <textarea id="inventory" name="inventory">{{ character.inventory }}</textarea>
+            </div>
+        </div>
+        <input type="submit" value="Zapisz">
+    </form>
+</body>
+</html>

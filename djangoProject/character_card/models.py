@@ -1,37 +1,28 @@
+from django.contrib.auth.models import User
 from django.db import models
 
-
-class Card(models.Model):
-    #m = max, c = current
-    MHP = models.IntegerField()
-    CHP = models.IntegerField()
-    Name = models.TextField()
-    Class = models.TextField()
-    Race = models.TextField()
-    Level = models.IntegerField()
-    Strenght = models.IntegerField()
-    Dexterity = models.IntegerField()
-    Constitution = models.IntegerField()
-    Inteligence = models.IntegerField()
-    Wisdom = models.IntegerField()
-    Charisma = models.IntegerField()
-    # saving throws
+class Character(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    name = models.TextField()
+    race = models.TextField()
+    class_name = models.TextField(db_column='class')
+    level = models.IntegerField()
+    strength = models.IntegerField()
+    dexterity = models.IntegerField()
+    constitution = models.IntegerField()
+    intelligence = models.IntegerField()
+    wisdom = models.IntegerField()
+    charisma = models.IntegerField()
     StrST = models.IntegerField()
     DexST = models.IntegerField()
     ConST = models.IntegerField()
     IntST = models.IntegerField()
     WisST = models.IntegerField()
-    #hit dices
     Mhitdice = models.IntegerField()
     Chitdice = models.IntegerField()
-    #death saves
     Dsp = models.IntegerField()
     Dsf = models.IntegerField()
-    Skills = models.TextField()
-    Proficiencies = models.TextField()
-    Spells = models.TextField()
-    Inventory = models.TextField()
-
-
-
-
+    skills = models.TextField()
+    proficiencies = models.TextField()
+    spells = models.TextField()
+    inventory = models.TextField()

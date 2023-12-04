@@ -21,7 +21,8 @@ from django.views.generic.base import TemplateView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("accounts/", include("accounts.urls")),  # new
-    path('', include( "dice_roller.urls", namespace="dice_roller")),
+    path('dice_roller', include( "dice_roller.urls", namespace="dice_roller")),
     path("accounts/", include("django.contrib.auth.urls")),
+    path('character_card/', include('character_card.urls')),
 
 ]

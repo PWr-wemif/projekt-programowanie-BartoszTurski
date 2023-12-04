@@ -1,7 +1,7 @@
 from django.urls import path
 from . import views
 
-app_name = 'dice_roler'
+
 
 
 """
@@ -25,9 +25,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
+app_name = 'character_card'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('dice_roller/', include('dice_roller.urls')),
+    path('', views.character_view, name='character_view'),
     # Add other app URLs as needed
 ]
 
