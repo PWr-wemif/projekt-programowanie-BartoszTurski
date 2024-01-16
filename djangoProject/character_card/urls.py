@@ -29,8 +29,17 @@ app_name = 'character_card'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
     path('dice_roller/', include('dice_roller.urls')),
-    path('', views.character_view, name='character_view'),
+    #path('', views.character_view, name='character_view'),
+    path('view/', views.character_view, name='character_view'),
+    path('list/', views.list_characters, name='list_characters'),
+    path('view/<int:character_id>/', views.character_view, name='character_view'),
+    path('character_view/<int:pk>/', views.character_view),
+    path('create/', views.character_edit, name='character_create'),
+    path('character_edit/<int:pk>/', views.character_edit),
+  path('edit/<int:character_id>/', views.character_edit, name='character_edit'),
+
     # Add other app URLs as needed
 ]
 

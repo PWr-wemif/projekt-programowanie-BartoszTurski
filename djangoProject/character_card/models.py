@@ -6,7 +6,7 @@ class Character(models.Model):
     name = models.TextField()
     race = models.TextField()
     class_name = models.TextField(db_column='class')
-    level = models.IntegerField()
+    level = models.IntegerField(blank=True)
     strength = models.IntegerField()
     dexterity = models.IntegerField()
     constitution = models.IntegerField()

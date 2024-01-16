@@ -4,9 +4,9 @@
     <title>Symulator Rzutów Kością</title>
 </head>
 <body>
-<a href="{% url 'character_card:character_view' %}">Powrót do karty postaci</a>
+<a href="{% url 'character_card:character_view' character %}">Powrót do karty postaci</a>
     <h2>Symulator rzutów kością 2023</h2>
-    <form method="post" action="{% url 'dice_roller:roll_dice' %}">
+    <form method="post" action="{% url 'dice_roller:roll_dice' character %}">
         {% csrf_token %}
         <label for="num_dice">ilość rzutów:</label>
         <input type="number" name="num_dice" value="1" min="1"><br>

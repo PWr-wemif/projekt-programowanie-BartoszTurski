@@ -1,43 +1,47 @@
-from django.shortcuts import render
 from .models import Character
+from django.contrib.auth.models import User
+from django.shortcuts import render
+from .forms import CharacterForm
+from .models import Character
+from django.shortcuts import render, redirect, get_object_or_404
 
-def character_view(request):
-    if request.method == 'POST':
 
-        data = request.POST
+def list_characters(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
 
+    characters = Character.objects.filter(user=request.user)
+    return render(request, 'character_card/list_characters.html', {'characters': characters})
 
-        character = Character.objects.create(
-            user=request.user,
-            name=data.get('name'),
-            race=data.get('race'),
-            class_name=data.get('class'),
-            level=data.get('level'),
-            strength=data.get('strength'),
-            dexterity=data.get('dexterity'),
-            constitution=data.get('constitution'),
-            intelligence=data.get('intelligence'),
-            wisdom=data.get('wisdom'),
-            charisma=data.get('charisma'),
-            StrST=data.get('StrST'),
-            DexST=data.get('DexST'),
-            ConST=data.get('ConST'),
-            IntST=data.get('IntST'),
-            WisST=data.get('WisST'),
-            Mhitdice=data.get('Mhitdice'),
-            Chitdice=data.get('Chitdice'),
-            Dsp=data.get('Dsp'),
-            Dsf=data.get('Dsf'),
-            skills=data.get('skills'),
-            proficiencies=data.get('proficiencies'),
-            spells=data.get('spells'),
-            inventory=data.get('inventory'),
-        )
+def character_edit(request, character_id=None):
+    if not request.user.is_authenticated:
+        return redirect('login')
 
-        # Zapisujemy obiekt do bazy danych
-        character.save()
+    if character_id:
+        character = get_object_or_404(Character, id=character_id, user=request.user)
+        if request.method == 'POST':
+            form = CharacterForm(request.POST, instance=character)
+            if form.is_valid():
+                form.save()
+                return redirect('character_card:character_view', character.id)
+        else:
+            form = CharacterForm(instance=character)
+    else:
+        if request.method == 'POST':
+            form = CharacterForm(request.POST)
+            if form.is_valid():
+                new_character = form.save(commit=False)
+                new_character.user = request.user
+                new_character.save()
+                return redirect('character_card:character_view', new_character.id)
+        else:
+            form = CharacterForm()
 
-    # Pobieramy postać zalogowanego użytkownika
-    character = Character.objects.filter(user=request.user).first()
+    return render(request, 'character_card/character_edit.html', {'form': form})
 
-    return render(request, 'character_card/character_form.html', {'character': character})
+def character_view(request, character_id):
+    if not request.user.is_authenticated:
+        return redirect('login')
+
+    character = get_object_or_404(Character, id=character_id, user=request.user)
+    return render(request, 'character_card/characterview.html', {'character': character})

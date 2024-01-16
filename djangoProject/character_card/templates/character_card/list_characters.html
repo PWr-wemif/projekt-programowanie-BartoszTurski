@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Character List</title>
+</head>
+<body>
+    <h1>Character List</h1>
+    <ul>
+        {% for character in characters %}
+            <li><a href="{% url 'character_card:character_view' character.id %}">{{ character.name }}</a></li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'character_card:character_create' %}">Create New Character</a>
+</body>
+</html>
