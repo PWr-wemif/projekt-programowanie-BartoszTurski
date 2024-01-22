@@ -1,18 +1,3 @@
-<!--
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-{{character.name}} {{ character.class_name }} {{ character.level }}
-<br>
-
-
-</body>
- -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,31 +8,90 @@
 <body>
     <div class="container">
         <h2>Character Details</h2>
-        <p>Name: {{ character.name }}</p>
-        <p>Race: {{ character.race }}</p>
-        <p>Class: {{ character.class_name }}</p>
-        <p>Level: {{ character.level }}</p>
-        <p>Strength: {{ character.strength }}</p>
-        <p>Dexterity: {{ character.dexterity }}</p>
-        <p>Constitution: {{ character.constitution }}</p>
-        <p>Intelligence: {{ character.intelligence }}</p>
-        <p>Wisdom: {{ character.wisdom }}</p>
-        <p>Charisma: {{ character.charisma }}</p>
-        <p>Strength Saving Throw: {{ character.StrST }}</p>
-        <p>Dexterity Saving Throw: {{ character.DexST }}</p>
-        <p>Constitution Saving Throw: {{ character.ConST }}</p>
-        <p>Intelligence Saving Throw: {{ character.IntST }}</p>
-        <p>Wisdom Saving Throw: {{ character.WisST }}</p>
-        <p>Main Hit Dice: {{ character.Mhitdice }}</p>
-        <p>Character Hit Dice: {{ character.Chitdice }}</p>
-        <p>Death Save Passes: {{ character.Dsp }}</p>
-        <p>Death Save Fails: {{ character.Dsf }}</p>
-        <p>Skills: {{ character.skills }}</p>
-        <p>Proficiencies: {{ character.proficiencies }}</p>
-        <p>Spells: {{ character.spells }}</p>
-        <p>Inventory: {{ character.inventory }}</p>
-       <a href="{% url 'character_card:character_edit' character.pk %}">Edit Character</a>
+
+        <!-- Display character details -->
+        <div>
+            <strong>Name:</strong> {{ character.name }}
+        </div>
+        <div>
+            <strong>Race:</strong> {{ character.race.name }}
+        </div>
+        <div>
+            <strong>Class:</strong> {{ character.character_class.name }}
+        </div>
+        <div>
+            <strong>Level:</strong> {{ character.level }}
+        </div>
+        <div>
+            <strong>Strength:</strong> {{ character.strength }}
+        </div>
+        <div>
+            <strong>Dexterity:</strong> {{ character.dexterity }}
+        </div>
+        <div>
+            <strong>Constitution:</strong> {{ character.constitution }}
+        </div>
+        <div>
+            <strong>Intelligence:</strong> {{ character.intelligence }}
+        </div>
+        <div>
+            <strong>Wisdom:</strong> {{ character.wisdom }}
+        </div>
+        <div>
+            <strong>Charisma:</strong> {{ character.charisma }}
+        </div>
+        <div>
+            <strong>Strength Saving Throw:</strong> {{ character.StrST }}
+        </div>
+        <div>
+            <strong>Dexterity Saving Throw:</strong> {{ character.DexST }}
+        </div>
+        <div>
+            <strong>Constitution Saving Throw:</strong> {{ character.ConST }}
+        </div>
+        <div>
+            <strong>Intelligence Saving Throw:</strong> {{ character.IntST }}
+        </div>
+        <div>
+            <strong>Wisdom Saving Throw:</strong> {{ character.WisST }}
+        </div>
+        <div>
+            <strong>Maximum Hit Dice:</strong> {{ character.Mhitdice }}
+        </div>
+        <div>
+            <strong>Current Hit Dice:</strong> {{ character.Chitdice }}
+        </div>
+        <div>
+            <strong>Death Saves Pass:</strong> {{ character.Dsp }}
+        </div>
+        <div>
+            <strong>Death Saves Fail:</strong> {{ character.Dsf }}
+        </div>
+        <div>
+            <strong>Skills:</strong>
+            <ul>
+                {% for skill in character.skills.all %}
+                    <li>{{ skill.name }} - {{ skill.description }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div>
+            <strong>Spells:</strong>
+            <ul>
+                {% for spell in character.character_class.spells.all %}
+                    <li>{{ spell.name }} - {{ spell.description }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div>
+            <strong>Inventory Items:</strong>
+            <ul>
+                {% for item in character.inventory_items.all %}
+                    <li>{{ item.name }} - {{ item.description }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+   <a href="{% url 'character_card:character_edit' pk=character.id %}" class="btn btn-primary">Edit Character</a>
     </div>
-<a href="{% url "dice_roller:roll_dice" character.id%}">roll diece</a>
 </body>
 </html>

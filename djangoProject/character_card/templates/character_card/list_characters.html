@@ -7,11 +7,11 @@
 <body>
     <h1>Character List</h1>
     <ul>
-        {% for character in characters %}
-            <li><a href="{% url 'character_card:character_view' character.id %}">{{ character.name }}</a></li>
-        {% endfor %}
+       {% for character in characters %}
+   <a href="{% url 'character_card:character_detail' character_id=character.id %}">{{ character.name }}</a>
+{% endfor %}
     </ul>
 
-    <a href="{% url 'character_card:character_create' %}">Create New Character</a>
+     <a href="{% url 'character_card:character_create' %}" class="btn btn-primary">Create New Character</a>
 </body>
 </html>

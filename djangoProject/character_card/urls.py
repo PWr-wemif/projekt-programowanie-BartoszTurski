@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-
+from .views import character_create, character_edit
 
 
 
@@ -28,19 +28,16 @@ from django.urls import include, path
 app_name = 'character_card'
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('view/', views.character_view, name='character_view_list'),
+    path('view/<int:character_id>/', views.character_view, name='character_detail'),
+    path('character_view/<int:pk>/', views.character_view, name='character_view_pk'),
 
-    path('dice_roller/', include('dice_roller.urls')),
-    #path('', views.character_view, name='character_view'),
-    path('view/', views.character_view, name='character_view'),
+    path('create/', views.character_create, name='character_create'),  # Corrected view reference
+    path('edit/<int:pk>/', views.character_edit, name='character_edit'),  # Edit a specific character
+
     path('list/', views.list_characters, name='list_characters'),
-    path('view/<int:character_id>/', views.character_view, name='character_view'),
-    path('character_view/<int:pk>/', views.character_view),
-    path('create/', views.character_edit, name='character_create'),
-    path('character_edit/<int:pk>/', views.character_edit),
-  path('edit/<int:character_id>/', views.character_edit, name='character_edit'),
 
-    # Add other app URLs as needed
+
 ]
 
 

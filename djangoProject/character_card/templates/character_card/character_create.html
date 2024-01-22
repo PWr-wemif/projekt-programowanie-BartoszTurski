@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Character</title>
+    <!-- Add any additional CSS here -->
+</head>
+<body>
+    <div class="container">
+        <h2>Create New Character</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }} <!-- This will display the form fields -->
+            <button type="submit">Create Character</button>
+        </form>
+    </div>
+</body>
+</html>
