@@ -1,8 +1,12 @@
-aplikacja będzie napisana w pythonie w technologii Django, przy pomocy PyCharma 
-użytkownik będzie mógł przeglądać, modyfikować i zarządzać kartami postaci do gier typu ttrpg oraz 
-dane z kart postaci będą przechowywane w bazie danych i dostępne w przeglądarce.
-będą 2 rodzaje kont:
- konto użytkownika - pozwala na dostęp do przeglądania i modyfikacji własnej karty postaci oraz narzędzi
- konto administratora - pozwala na dostęp do przeglądania i modyfikacji kart innych użytkowników oraz pozostałych narzędzi.
+Projekt zakłada stworzenie aplikacji webowej "Character Builder" dla miłośników gier fabularnych RPG, która umożliwi użytkownikom tworzenie i edycję własnych postaci. Aplikacja zostanie zbudowana z wykorzystaniem Django - frameworka Pythona, zapewniającego niezbędne narzędzia do obsługi backendu, w tym modeli danych, widoków i formularzy, oraz JavaScript do dynamicznego ładowania danych bez konieczności przeładowywania strony. Użytkownicy będą mogli wybrać klasę postaci, rasę, umiejętności oraz czary, z których każdy wybór wpłynie na dostępne opcje i statystyki postaci.
 
-użytkownik będzie mógł użyć aplikacji do stworzenia karty postaci oraz urzywania jej podczas rozgrywki
+Tworzenie Postaci: Użytkownik może tworzyć nową postać, wybierając spośród różnych ras i klas, a następnie personalizować jej cechy, takie jak imię, poziom i statystyki.
+Edycja Postaci: Istniejące postaci mogą być edytowane, umożliwiając użytkownikowi zmianę ich umiejętności, ekwipunku oraz czarów, jak również podstawowych atrybutów.
+Wybór Umiejętności: Użytkownik może przypisać swojej postaci specjalne umiejętności lub zdolności specyficzne dla wybranej klasy i rasy.
+Zarządzanie Ekwipunkiem: Możliwość dodawania przedmiotów do ekwipunku postaci oraz ich organizacji w zależności od potrzeb przygody.
+Wybór Czarów: Użytkownicy mogą przeglądać i wybierać czary dostępne dla swojej klasy postaci, dostosowując zestaw magii do swojego stylu gry.
+Aplikacja ta ma na celu zapewnienie kompleksowej platformy do zarządzania i personalizacji postaci RPG, ułatwiając graczom przygotowanie i rozwój ich postaci do sesji gry.
+
+
+
+

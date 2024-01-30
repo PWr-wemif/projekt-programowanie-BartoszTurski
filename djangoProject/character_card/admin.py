@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Character, Skill, Spell, InventoryItem
+from .models import Character, Skill, Spell, InventoryItem, CharacterClass
 
 class CharacterAdmin(admin.ModelAdmin):
     list_display = ('name', 'user', 'display_skills', 'display_spells', 'display_inventory_items')
@@ -23,3 +23,4 @@ admin.site.register(Character, CharacterAdmin)
 admin.site.register(Skill)
 admin.site.register(Spell)
 admin.site.register(InventoryItem)
+admin.site.register(CharacterClass)

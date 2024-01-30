@@ -13,7 +13,7 @@ class Skill(models.Model):
 class Spell(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
-
+    learned = models.BooleanField(default=False)
     def __str__(self):
         return self.name
 class CharacterClass(models.Model):
@@ -27,6 +27,7 @@ class CharacterClass(models.Model):
 class Race(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
+
 
     def __str__(self):
         return self.name
@@ -43,6 +44,7 @@ class Profession(models.Model):
 class InventoryItem(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
+
 
     def __str__(self):
         return self.name

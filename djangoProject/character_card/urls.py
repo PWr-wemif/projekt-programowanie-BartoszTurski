@@ -32,8 +32,10 @@ urlpatterns = [
     path('view/<int:character_id>/', views.character_view, name='character_detail'),
     path('character_view/<int:pk>/', views.character_view, name='character_view_pk'),
 
-    path('create/', views.character_create, name='character_create'),  # Corrected view reference
-    path('edit/<int:pk>/', views.character_edit, name='character_edit'),  # Edit a specific character
+    path('create/', views.character_create, name='character_create'),
+    path('edit/<int:pk>/', views.character_edit, name='character_edit'),
+    path('ajax/load-spells/', views.load_spells, name='ajax_load_spells'),
+
 
     path('list/', views.list_characters, name='list_characters'),
 

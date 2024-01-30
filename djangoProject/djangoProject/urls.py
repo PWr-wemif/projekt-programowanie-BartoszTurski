@@ -27,6 +27,7 @@ urlpatterns = [
     path("accounts/", include("django.contrib.auth.urls")),
     path('character_card/', include('character_card.urls', namespace='character_card')),
     path('character/', include('character_card.urls', namespace='character')),
-path('character_card/', include(('character_card.urls', 'character_card'), namespace='character_card')),
+    path('character_card/', include(('character_card.urls', 'character_card'), namespace='character_card')),
+    path('character_card/', include(('character_card.urls', 'character_card'), namespace='character_card')),
 
 ]

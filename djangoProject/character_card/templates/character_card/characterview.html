@@ -9,7 +9,7 @@
     <div class="container">
         <h2>Character Details</h2>
 
-        <!-- Display character details -->
+
         <div>
             <strong>Name:</strong> {{ character.name }}
         </div>
@@ -22,39 +22,98 @@
         <div>
             <strong>Level:</strong> {{ character.level }}
         </div>
-        <div>
-            <strong>Strength:</strong> {{ character.strength }}
-        </div>
-        <div>
-            <strong>Dexterity:</strong> {{ character.dexterity }}
-        </div>
-        <div>
-            <strong>Constitution:</strong> {{ character.constitution }}
-        </div>
-        <div>
-            <strong>Intelligence:</strong> {{ character.intelligence }}
-        </div>
-        <div>
-            <strong>Wisdom:</strong> {{ character.wisdom }}
-        </div>
-        <div>
-            <strong>Charisma:</strong> {{ character.charisma }}
-        </div>
-        <div>
-            <strong>Strength Saving Throw:</strong> {{ character.StrST }}
-        </div>
-        <div>
-            <strong>Dexterity Saving Throw:</strong> {{ character.DexST }}
-        </div>
-        <div>
-            <strong>Constitution Saving Throw:</strong> {{ character.ConST }}
-        </div>
-        <div>
-            <strong>Intelligence Saving Throw:</strong> {{ character.IntST }}
-        </div>
-        <div>
-            <strong>Wisdom Saving Throw:</strong> {{ character.WisST }}
-        </div>
+       <div>
+    <label>Strength:</label>
+    <span id="strength_value">{{ character.strength }}</span>
+    <button onclick="rollDice('strength')">Roll Dice</button>
+    <span id="strength_result"></span>
+</div>
+
+
+<div>
+    <label>Dexterity:</label>
+    <span id="dexterity_value">{{ character.dexterity }}</span>
+    <button onclick="rollDice('dexterity')">Roll Dice</button>
+    <span id="dexterity_result"></span>
+</div>
+
+
+<div>
+    <label>Constitution:</label>
+    <span id="constitution_value">{{ character.constitution }}</span>
+    <button onclick="rollDice('constitution')">Roll Dice</button>
+    <span id="constitution_result"></span>
+</div>
+
+
+<div>
+    <label>Intelligence:</label>
+    <span id="intelligence_value">{{ character.intelligence }}</span>
+    <button onclick="rollDice('intelligence')">Roll Dice</button>
+    <span id="intelligence_result"></span>
+</div>
+
+
+<div>
+    <label>Wisdom:</label>
+    <span id="wisdom_value">{{ character.wisdom }}</span>
+    <button onclick="rollDice('wisdom')">Roll Dice</button>
+    <span id="wisdom_result"></span>
+</div>
+
+
+<div>
+    <label>Charisma:</label>
+    <span id="charisma_value">{{ character.charisma }}</span>
+    <button onclick="rollDice('charisma')">Roll Dice</button>
+    <span id="charisma_result"></span>
+</div>
+       <div>
+    <label>Strength ST:</label>
+    <span id="StrST_value">{{ character.StrST }}</span>
+    <button onclick="rollDice('StrST')">Roll Dice</button>
+    <span id="StrST_result"></span>
+</div>
+
+
+<div>
+    <label>Dexterity ST:</label>
+    <span id="DexST_value">{{ character.DexST }}</span>
+    <button onclick="rollDice('DexST')">Roll Dice</button>
+    <span id="DexST_result"></span>
+</div>
+
+
+<div>
+    <label>Constitution ST:</label>
+    <span id="ConST_value">{{ character.ConST }}</span>
+    <button onclick="rollDice('ConST')">Roll Dice</button>
+    <span id="ConST_result"></span>
+</div>
+
+
+<div>
+    <label>Intelligence ST:</label>
+    <span id="IntST_value">{{ character.IntST }}</span>
+    <button onclick="rollDice('IntST')">Roll Dice</button>
+    <span id="IntST_result"></span>
+</div>
+
+
+<div>
+    <label>Wisdom ST:</label>
+    <span id="WisST_value">{{ character.WisST }}</span>
+    <button onclick="rollDice('WisST')">Roll Dice</button>
+    <span id="WisST_result"></span>
+</div>
+
+
+<div>
+    <label>Charisma ST:</label>
+    <span id="ChaST_value">{{ character.ChaST }}</span>
+    <button onclick="rollDice('ChaST')">Roll Dice</button>
+    <span id="ChaST_result"></span>
+</div>
         <div>
             <strong>Maximum Hit Dice:</strong> {{ character.Mhitdice }}
         </div>
@@ -79,7 +138,9 @@
             <strong>Spells:</strong>
             <ul>
                 {% for spell in character.character_class.spells.all %}
+                    {% if spell.learned %}
                     <li>{{ spell.name }} - {{ spell.description }}</li>
+                    {% endif %}
                 {% endfor %}
             </ul>
         </div>
@@ -93,5 +154,26 @@
         </div>
    <a href="{% url 'character_card:character_edit' pk=character.id %}" class="btn btn-primary">Edit Character</a>
     </div>
+<div>
+    <a href="{% url 'character_card:list_characters' %}">
+        <button type="button">Back to Character List</button>
+    </a>
+</div>
+
+<script>
+    function rollDice(stat) {
+        var roll = Math.floor(Math.random() * 20) + 1;
+        var statValue = document.getElementById(stat + '_value').innerText;
+        var resultText = "Rolled: " + roll + ". ";
+
+        if (roll >= parseInt(statValue)) {
+            resultText += "Success!";
+        } else {
+            resultText += "Failed.";
+        }
+
+        document.getElementById(stat + '_result').innerText = resultText;
+    }
+</script>
 </body>
 </html>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create/Edit Character</title>
-    <!-- Add any additional CSS here -->
+
 </head>
 <body>
     <div class="container">
@@ -12,31 +12,31 @@
         <form method="post">
             {% csrf_token %}
 
-            <!-- User Field -->
+
             <div>
                 <label for="id_user">User:</label>
                 {{ form.user }}
             </div>
 
-            <!-- Character Name -->
+
             <div>
                 <label for="id_name">Name:</label>
                 {{ form.name }}
             </div>
 
-            <!-- Character Class Dropdown -->
+
          <div>
     <label for="id_character_class">Character Class:</label>
     {{ form.character_class }}
 </div>
 
-            <!-- Race Dropdown -->
+
             <div>
     <label for="id_race">Race:</label>
     {{ form.race }}
 </div>
 
-            <!-- Character Statistics -->
+
             <div>
                 <label for="id_level">Level:</label>
                 {{ form.level }}
@@ -76,78 +76,82 @@
     <input type="number" name="StrST" id="id_StrST" value="{{ character.StrST }}">
 </div>
 
-<!-- Dexterity Saving Throw (DexST) -->
+
 <div>
     <label for="id_DexST">Dexterity ST:</label>
     <input type="number" name="DexST" id="id_DexST" value="{{ character.DexST }}">
 </div>
 
-<!-- Constitution Saving Throw (ConST) -->
+
 <div>
     <label for="id_ConST">Constitution ST:</label>
     <input type="number" name="ConST" id="id_ConST" value="{{ character.ConST }}">
 </div>
 
-<!-- Intelligence Saving Throw (IntST) -->
+
 <div>
     <label for="id_IntST">Intelligence ST:</label>
     <input type="number" name="IntST" id="id_IntST" value="{{ character.IntST }}">
 </div>
 
-<!-- Wisdom Saving Throw (WisST) -->
+
 <div>
     <label for="id_WisST">Wisdom ST:</label>
     <input type="number" name="WisST" id="id_WisST" value="{{ character.WisST }}">
 </div>
 
-<!-- Maximum Hit Dice (Mhitdice) -->
+
 <div>
     <label for="id_Mhitdice">Max Hit Dice:</label>
     <input type="number" name="Mhitdice" id="id_Mhitdice" value="{{ character.Mhitdice }}">
 </div>
 
-<!-- Current Hit Dice (Chitdice) -->
+
 <div>
     <label for="id_Chitdice">Current Hit Dice:</label>
     <input type="number" name="Chitdice" id="id_Chitdice" value="{{ character.Chitdice }}">
 </div>
 
-<!-- Death Saves Pass (Dsp) -->
+
 <div>
     <label for="id_Dsp">Death Saves Pass:</label>
     <input type="number" name="Dsp" id="id_Dsp" value="{{ character.Dsp }}">
 </div>
 
-<!-- Death Saves Fail (Dsf) -->
+
 <div>
     <label for="id_Dsf">Death Saves Fail:</label>
     <input type="number" name="Dsf" id="id_Dsf" value="{{ character.Dsf }}">
 </div>
 
-            <!-- Skills (Multiple Choice) -->
+
             <div>
     <label>Skills:</label>
     {{ form.skills }}
 </div>
 
-            <!-- Spells (Multiple Choice) -->
-            <div>
-    <label>Spells:</label>
-    {{ form.spells }}
-</div>
 
-<!-- Inventory Items Checkboxes -->
+      <div>
+          <label>Spells</label>
+          {% for spell in character.character_class.spells.all %}
+              {% if spell.learned %}
+                  <input type="checkbox" value="{{ spell.id }}" name="spell" checked="True"/>{{ spell }}
+              {% else %}
+                  <input type="checkbox" value="{{ spell.id }}" name="spell"/>{{ spell }}
+              {% endif %}
+          {% endfor %}
+      </div>
 <div>
     <label>Inventory Items:</label>
     {{ form.inventory_items }}
 </div>
 
-            <!-- Submit Button -->
+
+
             <div>
                 <button type="submit">Save</button>
             </div>
         </form>
     </div>
-
 </body>
 </html>
